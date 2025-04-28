@@ -72,7 +72,7 @@ const Products = ({ products, addToCart }) => {
           </div>
           
           <div className="w-1/2">
-            <h3 className="font-semibold mb-2">Price Range: ${priceRange[0]} - ${priceRange[1]}</h3>
+            <h3 className="font-semibold mb-2">Price Range: frw{priceRange[0]} - frw{priceRange[1]}</h3>
             <div className="flex items-center gap-4">
               <input 
                 type="range" 
@@ -135,7 +135,7 @@ const Products = ({ products, addToCart }) => {
               </div>
               
               <div>
-                <h3 className="font-semibold mb-2">Price Range: ${priceRange[0]} - ${priceRange[1]}</h3>
+                <h3 className="font-semibold mb-2">Price Range: frw{priceRange[0]} - frw{priceRange[1]}</h3>
                 <div className="space-y-4">
                   <input 
                     type="range" 
@@ -219,7 +219,7 @@ const Products = ({ products, addToCart }) => {
                     ))}
                     <span className="ml-2 text-sm text-gray-600">{product.rating}</span>
                   </div>
-                  <p className="text-blue-600 font-bold text-xl mb-4">${product.price.toFixed(2)}</p>
+                  <p className="text-blue-600 font-bold text-xl mb-4">frw{product.price.toFixed(2)}</p>
                   <button 
                     className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors"
                     onClick={() => addToCart(product)}
@@ -263,7 +263,7 @@ const Products = ({ products, addToCart }) => {
                     <span className="ml-2 text-gray-600">{selectedProduct.rating} rating</span>
                   </div>
                   
-                  <p className="text-blue-600 font-bold text-2xl mb-4">${selectedProduct.price.toFixed(2)}</p>
+                  <p className="text-blue-600 font-bold text-2xl mb-4">frw{selectedProduct.price.toFixed(2)}</p>
                   
                   <p className="text-gray-700 mb-6">{selectedProduct.description}</p>
                   

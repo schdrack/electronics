@@ -23,12 +23,12 @@ import Contact from './components/Contact';
 
 // Mock data
 const products = [
-  { id: 1, name: 'Smartphone X', price: 299.99, category: 'Phones', rating: 4.5, image: '/images/phone.webp', description: 'Latest smartphone with advanced camera features' },
-  { id: 2, name: 'Laptop Pro', price: 899.99, category: 'Laptops', rating: 4.8, image: '/images/laptop.jpg', description: 'High-performance laptop for professionals' },
-  { id: 3, name: 'Wireless Earbuds', price: 79.99, category: 'Accessories', rating: 4.2, image: '/images/earbuds.jpg', description: 'Crystal clear sound with noise cancellation' },
-  { id: 4, name: 'Smart Watch', price: 199.99, category: 'Wearables', rating: 4.3, image: '/images/watch.jpg', description: 'Track your fitness and stay connected' },
-  { id: 5, name: 'Tablet Mini', price: 249.99, category: 'Tablets', rating: 4.0, image: '/images/tablet.jpg', description: 'Compact tablet for entertainment on the go' },
-  { id: 6, name: 'Bluetooth Speaker', price: 59.99, category: 'Accessories', rating: 4.1, image: '/images/speaker.jpg', description: 'Portable speaker with rich bass' },
+  { id: 1, name: 'Smartphone X', price: 299.99, category: 'Phones', rating: 4.5, image: 'src/phone.webp', description: 'Latest smartphone with advanced camera features' },
+  { id: 2, name: 'Laptop Pro', price: 899.99, category: 'Laptops', rating: 4.8, image: 'src/computer.webp', description: 'High-performance laptop for professionals' },
+  { id: 3, name: 'Wireless Earbuds', price: 79.99, category: 'Accessories', rating: 4.2, image: 'src/Wireless Earbuds.avif', description: 'Crystal clear sound with noise cancellation' },
+  { id: 4, name: 'Smart Watch', price: 199.99, category: 'Wearables', rating: 4.3, image: 'src/Smart Watch.jpg', description: 'Track your fitness and stay connected' },
+  { id: 5, name: 'Tablet Mini', price: 249.99, category: 'Tablets', rating: 4.0, image: 'src/images/tablet.jpg', description: 'Compact tablet for entertainment on the go' },
+  { id: 6, name: 'Bluetooth Speaker', price: 59.99, category: 'Accessories', rating: 4.1, image: 'src/images/speaker.jpg', description: 'Portable speaker with rich bass' },
 ];
 
 const App = () => {
@@ -52,7 +52,7 @@ const App = () => {
         <header className="bg-blue-800 text-white p-4 shadow-md">
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center space-x-2">
-              <img src="/logo.png" alt="Mura Infinity Tech" className="h-10" />
+              <img src="src/logo.png" alt="Mura Infinity Tech" className="h-10 rounded-full" />
               <Link to="/" className="text-xl font-bold">Mura Infinity Tech</Link>
             </div>
             <nav className="hidden md:flex space-x-6">
@@ -118,7 +118,7 @@ const App = () => {
                         </div>
                         <div className="flex-grow">
                           <h3 className="font-medium">{item.name}</h3>
-                          <p className="text-blue-600 font-bold">${item.price.toFixed(2)}</p>
+                          <p className="text-blue-600 font-bold">frw{item.price.toFixed(2)}</p>
                         </div>
                         <button 
                           className="text-red-500 hover:text-red-700"
@@ -133,7 +133,7 @@ const App = () => {
                   <div className="border-t pt-4">
                     <div className="flex justify-between font-bold text-lg mb-6">
                       <span>Total:</span>
-                      <span>${cartTotal.toFixed(2)}</span>
+                      <span>frw{cartTotal.toFixed(2)}</span>
                     </div>
                     
                     <button className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors mb-2">

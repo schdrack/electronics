@@ -40,7 +40,7 @@ const Home = ({ products, addToCart }) => {
               </div>
               <div className="p-4">
                 <h3 className="font-semibold text-lg mb-1">{product.name}</h3>
-                <p className="text-blue-600 font-bold text-xl mb-4">${product.price.toFixed(2)}</p>
+                <p className="text-blue-600 font-bold text-xl mb-4">frw{product.price.toFixed(2)}</p>
                 <button 
                   className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors"
                   onClick={() => addToCart(product)}
