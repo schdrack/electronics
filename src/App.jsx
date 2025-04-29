@@ -21,7 +21,7 @@ import Products from './components/Products';
 import About from './components/About';
 import Contact from './components/Contact';
 import Register from './components/Register';
-
+import Login from './components/Login';
 
 
 // Mock data
@@ -64,6 +64,7 @@ const App = () => {
               <Link to="/products" className="hover:text-blue-200">Products</Link>
               <Link to="/about" className="hover:text-blue-200">About</Link>
               <Link to="/contact" className="hover:text-blue-200">Contact</Link>
+              <Link to="/login">Login</Link>
             </nav>
             <div className="flex items-center space-x-4">
               <button 
@@ -89,6 +90,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </main>
 
