@@ -22,7 +22,7 @@ const About = () => {
         <div className="w-full md:w-1/3 flex flex-col items-center">
           <div className="relative mb-6 group">
             <img 
-              src="https://photos.fife.usercontent.google.com/pw/AP1GczPwg1wl6R-xD2q1QVwz1O4LOthxp9iPb8NTmnkhzISx0v_9twhAYBXU=w1039-h645-s-no-gm?authuser=0" // Replace with your actual image path
+              src="https://photos.fife.usercontent.google.com/pw/AP1GczOmObjXxKwhCgVq1dIO-OGsrPpcuaH6WG0xM5ASnd2huWHNWOSLqzVT=w963-h645-s-no-gm?authuser=0" // Replace with your actual image path
               alt="Mura Infinity Tech"
               className="w-64 h-64 rounded-full object-cover border-4 border-blue-500 shadow-lg transform group-hover:scale-105 transition-transform duration-300"
             />
