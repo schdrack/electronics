@@ -26,7 +26,7 @@ import Login from './components/Login';
 
 // Mock data
 const products = [
-  { id: 1, name: 'Smartphone X', price: 299.99, category: 'Phones', rating: 4.5, image: 'src/computer.webp', description: 'Latest smartphone with advanced camera features' },
+  { id: 1, name: 'Smartphone X', price: 299.99, category: 'Phones', rating: 4.5, image: 'https://media.wired.com/photos/5b22c5c4b878a15e9ce80d92/master/w_2560%2Cc_limit/iphonex-TA.jpg', description: 'Latest smartphone with advanced camera features' },
   { id: 2, name: 'Laptop Pro', price: 899.99, category: 'Laptops', rating: 4.8, image: 'src/computer.webp', description: 'High-performance laptop for professionals' },
   { id: 3, name: 'Wireless Earbuds', price: 79.99, category: 'Accessories', rating: 4.2, image: 'src/Wireless Earbuds.avif', description: 'Crystal clear sound with noise cancellation' },
   { id: 4, name: 'Smart Watch', price: 199.99, category: 'Wearables', rating: 4.3, image: 'src/images/watch.jpg', description: 'Track your fitness and stay connected' },
