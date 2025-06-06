@@ -56,7 +56,7 @@ const App = () => {
         <header className="bg-blue-800 text-white p-4 shadow-md">
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center space-x-2">
-              <img src="src/logo.png" alt="Mura Infinity Tech" className="h-10 rounded-full" />
+              <img src="https://lh3.googleusercontent.com/a/ACg8ocKbPoCM1oK2aQ-X9iDRRo8SPSI_6DKoqfdtbrZYcsYDPT3WMFwV=s96-c-rg-br100" alt="Mura Infinity Tech" className="h-10 rounded-full" />
               <Link to="/" className="text-xl font-bold">Mura Infinity Tech</Link>
             </div>
             <nav className="hidden md:flex space-x-6">
