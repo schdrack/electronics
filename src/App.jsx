@@ -27,9 +27,9 @@ import Login from './components/Login';
 // Mock data
 const products = [
   { id: 1, name: 'Smartphone X', price: 299.99, category: 'Phones', rating: 4.5, image: 'https://sparx.pk/cdn/shop/files/NeoxBrownPTALOGO.jpg?v=1721642419', description: 'Latest smartphone with advanced camera features' },
-  { id: 2, name: 'Laptop Pro', price: 899.99, category: 'Laptops', rating: 4.8, image: 'src/computer.webp', description: 'High-performance laptop for professionals' },
-  { id: 3, name: 'Wireless Earbuds', price: 79.99, category: 'Accessories', rating: 4.2, image: 'src/Wireless Earbuds.avif', description: 'Crystal clear sound with noise cancellation' },
-  { id: 4, name: 'Smart Watch', price: 199.99, category: 'Wearables', rating: 4.3, image: 'src/images/watch.jpg', description: 'Track your fitness and stay connected' },
+  { id: 2, name: 'Laptop Pro', price: 899.99, category: 'Laptops', rating: 4.8, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd7zrdTLnrh2Jdpng7oYD1PAASjAPDP4UFDw&s', description: 'High-performance laptop for professionals' },
+  { id: 3, name: 'Wireless Earbuds', price: 79.99, category: 'Accessories', rating: 4.2, image: 'https://i5.walmartimages.com/seo/Wireless-Earbuds-Bluetooth-Headset-Microphone-Touch-Control-IPX7-Waterproof-High-Fidelity-Stereo-Earphones-Sports-Work-Compatible-iPhone-13-Pro-Max-X_ea3905c6-a23d-435d-952f-81b510607ac9.c223f55feb63d91007cc547d80932ba8.jpeg', description: 'Crystal clear sound with noise cancellation' },
+  { id: 4, name: 'Smart Watch', price: 199.99, category: 'Wearables', rating: 4.3, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTplNXkitXTcRw3Nxr_lv2WY05wd_REBnENDw&s', description: 'Track your fitness and stay connected' },
   { id: 5, name: 'Tablet Mini', price: 249.99, category: 'Tablets', rating: 4.0, image: 'src/images/tablet.jpg', description: 'Compact tablet for entertainment on the go' },
   { id: 6, name: 'Bluetooth Speaker', price: 59.99, category: 'Accessories', rating: 4.1, image: 'src/images/speaker.jpg', description: 'Portable speaker with rich bass' },
 ];
