@@ -23,10 +23,10 @@ const products = [
   // ✅ NEW FEATURED PRODUCTS
   { id: 7, name: 'Gaming Headset', price: 89.99, category: 'Accessories', rating: 4.6, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlR-l0PpQMkUtnnS0URaFVy8TGnuzSXtcGUV-NvirViUi16EOCsOsdjdZJdan4vT9Hxs4&usqp=CAU' },
   { id: 8, name: '4K UHD Monitor', price: 349.99, category: 'Displays', rating: 4.7, image: 'https://alogic.co/cdn/shop/files/ClarityProTouch27_UHD4KMonitor_1.webp?v=1696589680', description: 'Stunning 4K resolution display' },
-  { id: 9, name: 'Mechanical Keyboard', price: 129.99, category: 'Accessories', rating: 4.5, image: 'https://m.media-amazon.com/images/I/71jvvIKlIQL._AC_SL1500_.jpg', description: 'RGB backlit keyboard with tactile switches' },
-  { id: 10, name: 'Drone Camera', price: 499.99, category: 'Cameras', rating: 4.6, image: 'https://m.media-amazon.com/images/I/61p1V0Y1-aL._AC_SL1500_.jpg', description: 'Aerial footage in high resolution' },
-  { id: 11, name: 'Portable Power Bank', price: 39.99, category: 'Accessories', rating: 4.3, image: 'https://m.media-amazon.com/images/I/61qU+njL0oL._AC_SL1500_.jpg', description: 'Charge your devices on the go' },
-  { id: 12, name: 'Home Security Camera', price: 109.99, category: 'Security', rating: 4.4, image: 'https://m.media-amazon.com/images/I/71SmuGkS4xL._AC_SL1500_.jpg', description: 'Monitor your home remotely' },
+  { id: 9, name: 'Mechanical Keyboard', price: 129.99, category: 'Accessories', rating: 4.5, image: 'https://m.media-amazon.com/images/I/71fRP7KY9hL._AC_SL1500_.jpg', description: 'RGB backlit keyboard with tactile switches' },
+  { id: 10, name: 'Drone Camera', price: 499.99, category: 'Cameras', rating: 4.6, image: 'https://rukminim2.flixcart.com/image/850/1000/xif0q/drone/z/x/f/100-10-1-mini-drone-with-camera-hd-dual-camera-wifi-infrared-original-imagw82dhhxwhnfz.jpeg?q=90&crop=false', description: 'Aerial footage in high resolution' },
+  { id: 11, name: 'Portable Power Bank', price: 39.99, category: 'Accessories', rating: 4.3, image: 'https://media.4rgos.it/i/Argos/1977307_R_Z001A?w=750&h=440&qlt=70', description: 'Charge your devices on the go' },
+  { id: 12, name: 'Home Security Camera', price: 109.99, category: 'Security', rating: 4.4, image: 'https://rwandadeals.rw/assets/images/1677318852aa.png', description: 'Monitor your home remotely' },
 ];
 
 
