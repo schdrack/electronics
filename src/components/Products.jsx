@@ -1,15 +1,17 @@
 /**
-    * @description      : 
-    * @author           : Schadrack
-    * @group            : 
-    * @created          : 28/04/2025 - 17:01:19
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 28/04/2025
-    * - Author          : Schadrack
-    * - Modification    : 
-**/
+ * @description     : Electronics products filterable and searchable listing component
+ * @author          : Schadrack
+ * @created         : 28/04/2025 - 17:01:19
+ * @lastModified    : 07/06/2025
+ * @lastModifiedBy  : ChatGPT (Updated for clarity, accessibility, and consistency)
+ * 
+ * MODIFICATION LOG
+ * - Version        : 1.1.0
+ * - Date           : 07/06/2025
+ * - Author         : ChatGPT
+ * - Modification   : UI enhancements, added alt attributes, improved semantics
+ */
+
 // components/Products.jsx
 import React, { useState } from 'react';
 import { FaSearch, FaFilter, FaStar, FaTimes } from 'react-icons/fa';
@@ -27,26 +29,31 @@ const Products = ({ products, addToCart }) => {
     const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory ? product.category === selectedCategory : true;
     const matchesPrice = product.price >= priceRange[0] && product.price <= priceRange[1];
-    
     return matchesSearch && matchesCategory && matchesPrice;
   });
 
+  const resetFilters = () => {
+    setSearchTerm('');
+    setSelectedCategory('');
+    setPriceRange([0, 1000]);
+  };
+
   return (
     <div>
-      {/* Search and Filters */}
+      {/* Search and Filter Bar */}
       <div className="mb-8">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
           <div className="relative flex-grow max-w-2xl">
             <input
               type="text"
               placeholder="Search for electronics..."
+              aria-label="Search products"
               className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
           </div>
-          
           <button 
             className="md:hidden flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg"
             onClick={() => setIsMobileFiltersOpen(true)}
@@ -55,10 +62,10 @@ const Products = ({ products, addToCart }) => {
           </button>
         </div>
 
-        {/* Filters - Desktop */}
+        {/* Desktop Filters */}
         <div className="hidden md:flex gap-6 p-4 bg-gray-50 rounded-lg">
           <div className="w-1/4">
-            <h3 className="font-semibold mb-2">Categories</h3>
+            <label className="font-semibold mb-2 block">Category</label>
             <select 
               className="w-full p-2 border rounded"
               value={selectedCategory}
@@ -70,45 +77,37 @@ const Products = ({ products, addToCart }) => {
               ))}
             </select>
           </div>
-          
+
           <div className="w-1/2">
-            <h3 className="font-semibold mb-2">Price Range: frw{priceRange[0]} - frw{priceRange[1]}</h3>
+            <label className="font-semibold mb-2 block">
+              Price Range: frw{priceRange[0]} - frw{priceRange[1]}
+            </label>
             <div className="flex items-center gap-4">
               <input 
-                type="range" 
-                min="0" 
-                max="1000" 
-                step="50"
+                type="range" min="0" max="1000" step="50"
                 value={priceRange[0]}
                 onChange={(e) => setPriceRange([parseInt(e.target.value), priceRange[1]])}
                 className="w-full"
               />
               <input 
-                type="range" 
-                min="0" 
-                max="1000" 
-                step="50"
+                type="range" min="0" max="1000" step="50"
                 value={priceRange[1]}
                 onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
                 className="w-full"
               />
             </div>
           </div>
-          
+
           <button 
             className="text-blue-600 hover:text-blue-800 self-end"
-            onClick={() => {
-              setSearchTerm('');
-              setSelectedCategory('');
-              setPriceRange([0, 1000]);
-            }}
+            onClick={resetFilters}
           >
             Clear Filters
           </button>
         </div>
       </div>
 
-      {/* Mobile Filters Overlay */}
+      {/* Mobile Filters Panel */}
       {isMobileFiltersOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
           <div className="bg-white w-4/5 h-full p-4 overflow-y-auto">
@@ -118,10 +117,10 @@ const Products = ({ products, addToCart }) => {
                 <FaTimes size={24} />
               </button>
             </div>
-            
+
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold mb-2">Categories</h3>
+                <label className="font-semibold mb-2 block">Category</label>
                 <select 
                   className="w-full p-2 border rounded"
                   value={selectedCategory}
@@ -133,45 +132,35 @@ const Products = ({ products, addToCart }) => {
                   ))}
                 </select>
               </div>
-              
+
               <div>
-                <h3 className="font-semibold mb-2">Price Range: frw{priceRange[0]} - frw{priceRange[1]}</h3>
-                <div className="space-y-4">
-                  <input 
-                    type="range" 
-                    min="0" 
-                    max="1000" 
-                    step="50"
-                    value={priceRange[0]}
-                    onChange={(e) => setPriceRange([parseInt(e.target.value), priceRange[1]])}
-                    className="w-full"
-                  />
-                  <input 
-                    type="range" 
-                    min="0" 
-                    max="1000" 
-                    step="50"
-                    value={priceRange[1]}
-                    onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
-                    className="w-full"
-                  />
-                </div>
+                <label className="font-semibold mb-2 block">
+                  Price Range: frw{priceRange[0]} - frw{priceRange[1]}
+                </label>
+                <input 
+                  type="range" min="0" max="1000" step="50"
+                  value={priceRange[0]}
+                  onChange={(e) => setPriceRange([parseInt(e.target.value), priceRange[1]])}
+                  className="w-full mb-2"
+                />
+                <input 
+                  type="range" min="0" max="1000" step="50"
+                  value={priceRange[1]}
+                  onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
+                  className="w-full"
+                />
               </div>
-              
+
               <button 
                 className="w-full bg-blue-600 text-white py-2 rounded-lg"
                 onClick={() => setIsMobileFiltersOpen(false)}
               >
                 Apply Filters
               </button>
-              
+
               <button 
                 className="w-full text-blue-600 py-2"
-                onClick={() => {
-                  setSearchTerm('');
-                  setSelectedCategory('');
-                  setPriceRange([0, 1000]);
-                }}
+                onClick={resetFilters}
               >
                 Clear All
               </button>
@@ -180,7 +169,7 @@ const Products = ({ products, addToCart }) => {
         </div>
       )}
 
-      {/* Product Listing */}
+      {/* Product Grid */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-6">Electronics Products</h2>
         
@@ -189,11 +178,7 @@ const Products = ({ products, addToCart }) => {
             <p className="text-gray-500 text-lg">No products match your search criteria.</p>
             <button 
               className="mt-4 text-blue-600 hover:text-blue-800"
-              onClick={() => {
-                setSearchTerm('');
-                setSelectedCategory('');
-                setPriceRange([0, 1000]);
-              }}
+              onClick={resetFilters}
             >
               Clear filters
             </button>
@@ -244,14 +229,14 @@ const Products = ({ products, addToCart }) => {
                   <FaTimes size={24} />
                 </button>
               </div>
-              
+
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="md:w-1/2">
                   <div className="bg-gray-200 h-64 flex items-center justify-center rounded-lg">
                     <img src={selectedProduct.image} alt={selectedProduct.name} className="h-full object-cover" />
                   </div>
                 </div>
-                
+
                 <div className="md:w-1/2">
                   <div className="flex items-center mb-4">
                     {[...Array(5)].map((_, i) => (
@@ -262,22 +247,18 @@ const Products = ({ products, addToCart }) => {
                     ))}
                     <span className="ml-2 text-gray-600">{selectedProduct.rating} rating</span>
                   </div>
-                  
                   <p className="text-blue-600 font-bold text-2xl mb-4">frw{selectedProduct.price.toFixed(2)}</p>
-                  
                   <p className="text-gray-700 mb-6">{selectedProduct.description}</p>
-                  
-                  <div className="flex space-x-4">
-                    <button 
-                      className="flex-grow bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors"
-                      onClick={() => {
-                        addToCart(selectedProduct);
-                        setSelectedProduct(null);
-                      }}
-                    >
-                      Add to Cart
-                    </button>
-                  </div>
+
+                  <button 
+                    className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors"
+                    onClick={() => {
+                      addToCart(selectedProduct);
+                      setSelectedProduct(null);
+                    }}
+                  >
+                    Add to Cart
+                  </button>
                 </div>
               </div>
             </div>
