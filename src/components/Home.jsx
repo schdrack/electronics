@@ -74,7 +74,7 @@ const Home = ({ products, addToCart }) => {
 
           {/* CTA Buttons */}
           <div className="flex space-x-4">
-            <Link to="/products" className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors transform hover:scale-105 flex items-center">
+            <Link to="/components/products" className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors transform hover:scale-105 flex items-center">
               <span>Shop Now</span>
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
