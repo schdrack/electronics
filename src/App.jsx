@@ -21,8 +21,8 @@ const products = [
   { id: 6, name: 'Bluetooth Speaker', price: 59.99, category: 'Accessories', rating: 4.1, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRODXxX4H_aHEAEYLo6f36xXAWgQ2yUIQiNBA&s', description: 'Portable speaker with rich bass' },
 
   // ✅ NEW FEATURED PRODUCTS
-  { id: 7, name: 'Gaming Headset', price: 89.99, category: 'Accessories', rating: 4.6, image: 'https://m.media-amazon.com/images/I/71j6Y6EqK5L._AC_SL1500_.jpg', description: 'Immersive surround sound for gamers' },
-  { id: 8, name: '4K UHD Monitor', price: 349.99, category: 'Displays', rating: 4.7, image: 'https://m.media-amazon.com/images/I/91pi34PiRlL._AC_SL1500_.jpg', description: 'Stunning 4K resolution display' },
+  { id: 7, name: 'Gaming Headset', price: 89.99, category: 'Accessories', rating: 4.6, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlR-l0PpQMkUtnnS0URaFVy8TGnuzSXtcGUV-NvirViUi16EOCsOsdjdZJdan4vT9Hxs4&usqp=CAU' },
+  { id: 8, name: '4K UHD Monitor', price: 349.99, category: 'Displays', rating: 4.7, image: 'https://alogic.co/cdn/shop/files/ClarityProTouch27_UHD4KMonitor_1.webp?v=1696589680', description: 'Stunning 4K resolution display' },
   { id: 9, name: 'Mechanical Keyboard', price: 129.99, category: 'Accessories', rating: 4.5, image: 'https://m.media-amazon.com/images/I/71jvvIKlIQL._AC_SL1500_.jpg', description: 'RGB backlit keyboard with tactile switches' },
   { id: 10, name: 'Drone Camera', price: 499.99, category: 'Cameras', rating: 4.6, image: 'https://m.media-amazon.com/images/I/61p1V0Y1-aL._AC_SL1500_.jpg', description: 'Aerial footage in high resolution' },
   { id: 11, name: 'Portable Power Bank', price: 39.99, category: 'Accessories', rating: 4.3, image: 'https://m.media-amazon.com/images/I/61qU+njL0oL._AC_SL1500_.jpg', description: 'Charge your devices on the go' },
