@@ -1,22 +1,8 @@
-/**
- * @description     : Electronics products filterable and searchable listing component
- * @author          : Schadrack
- * @created         : 28/04/2025 - 17:01:19
- * @lastModified    : 07/06/2025
- * @lastModifiedBy  : ChatGPT (Updated for clarity, accessibility, and consistency)
- * 
- * MODIFICATION LOG
- * - Version        : 1.1.0
- * - Date           : 07/06/2025
- * - Author         : ChatGPT
- * - Modification   : UI enhancements, added alt attributes, improved semantics
- */
-
 // components/Products.jsx
 import React, { useState } from 'react';
-import { FaSearch, FaFilter, FaStar, FaTimes } from 'react-icons/fa';
+import { FaSearch, FaFilter, FaStar, FaTimes, FaShoppingCart } from 'react-icons/fa';
 
-const Products = ({ products, addToCart }) => {
+const Products = ({ products, addToCart, cart }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [priceRange, setPriceRange] = useState([0, 1000]);
@@ -37,6 +23,8 @@ const Products = ({ products, addToCart }) => {
     setSelectedCategory('');
     setPriceRange([0, 1000]);
   };
+
+  const totalCartPrice = cart.reduce((sum, item) => sum + item.price, 0);
 
   return (
     <div>
@@ -107,68 +95,6 @@ const Products = ({ products, addToCart }) => {
         </div>
       </div>
 
-      {/* Mobile Filters Panel */}
-      {isMobileFiltersOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
-          <div className="bg-white w-4/5 h-full p-4 overflow-y-auto">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold">Filters</h2>
-              <button onClick={() => setIsMobileFiltersOpen(false)}>
-                <FaTimes size={24} />
-              </button>
-            </div>
-
-            <div className="space-y-6">
-              <div>
-                <label className="font-semibold mb-2 block">Category</label>
-                <select 
-                  className="w-full p-2 border rounded"
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                >
-                  <option value="">All Categories</option>
-                  {categories.map(category => (
-                    <option key={category} value={category}>{category}</option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="font-semibold mb-2 block">
-                  Price Range: frw{priceRange[0]} - frw{priceRange[1]}
-                </label>
-                <input 
-                  type="range" min="0" max="1000" step="50"
-                  value={priceRange[0]}
-                  onChange={(e) => setPriceRange([parseInt(e.target.value), priceRange[1]])}
-                  className="w-full mb-2"
-                />
-                <input 
-                  type="range" min="0" max="1000" step="50"
-                  value={priceRange[1]}
-                  onChange={(e) => setPriceRange([priceRange[0], parseInt(e.target.value)])}
-                  className="w-full"
-                />
-              </div>
-
-              <button 
-                className="w-full bg-blue-600 text-white py-2 rounded-lg"
-                onClick={() => setIsMobileFiltersOpen(false)}
-              >
-                Apply Filters
-              </button>
-
-              <button 
-                className="w-full text-blue-600 py-2"
-                onClick={resetFilters}
-              >
-                Clear All
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Product Grid */}
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-6">Electronics Products</h2>
@@ -217,6 +143,26 @@ const Products = ({ products, addToCart }) => {
           </div>
         )}
       </div>
+
+      {/* Cart Summary and Checkout */}
+      {cart.length > 0 && (
+        <div className="sticky bottom-0 left-0 w-full bg-white shadow-md p-4 border-t z-30">
+          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-2 text-lg font-semibold">
+              <FaShoppingCart className="text-blue-600" />
+              <span>{cart.length} items in cart</span>
+              <span className="text-blue-600">|</span>
+              <span>Total: frw{totalCartPrice.toFixed(2)}</span>
+            </div>
+            <button 
+              className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+              onClick={() => alert('Proceeding to checkout...')}
+            >
+              Proceed to Checkout
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Product Detail Modal */}
       {selectedProduct && (
