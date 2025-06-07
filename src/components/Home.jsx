@@ -138,7 +138,7 @@ const Home = ({ products, addToCart }) => {
                 <p className="text-blue-600 font-bold text-xl mb-4">frw {product.price.toFixed(2)}</p>
                 <button 
                   className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors"
-                  onClick={() => addToCart(product)}
+                  onClick={() => addToCart(products)}
                 >
                   Add to Cart
                 </button>
