@@ -1,18 +1,6 @@
-/**
-    * @description      : 
-    * @author           : Schadrack
-    * @group            : 
-    * @created          : 28/04/2025 - 17:00:51
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 28/04/2025
-    * - Author          : Schadrack
-    * - Modification    : 
-**/
 // App.jsx
 import React, { useState } from 'react';
-import { FaSearch, FaShoppingCart, FaStar, FaFilter, FaTimes } from 'react-icons/fa';
+import { FaSearch, FaShoppingCart, FaStar, FaFilter, FaTimes, FaBars, FaUser } from 'react-icons/fa';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 // Components
@@ -22,7 +10,6 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Register from './components/Register';
 import Login from './components/Login';
-
 
 // Mock data
 const products = [
@@ -37,6 +24,7 @@ const products = [
 const App = () => {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const addToCart = (product) => {
     setCart([...cart, product]);
@@ -50,23 +38,87 @@ const App = () => {
 
   return (
     <Router>
-
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen flex flex-col bg-gray-50">
         {/* Header */}
-        <header className="bg-blue-800 text-white p-4 shadow-md">
+        <header className="bg-blue-800 text-white p-4 shadow-md sticky top-0 z-40">
           <div className="container mx-auto flex justify-between items-center">
             <div className="flex items-center space-x-2">
-              <img src="https://lh3.googleusercontent.com/a/ACg8ocKbPoCM1oK2aQ-X9iDRRo8SPSI_6DKoqfdtbrZYcsYDPT3WMFwV=s96-c-rg-br100" alt="Mura Infinity Tech" className="h-10 rounded-full" />
+              <button 
+                className="md:hidden mr-2"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                <FaBars size={20} />
+              </button>
+              <img 
+                src="https://lh3.googleusercontent.com/a/ACg8ocKbPoCM1oK2aQ-X9iDRRo8SPSI_6DKoqfdtbrZYcsYDPT3WMFwV=s96-c-rg-br100" 
+                alt="Mura Infinity Tech" 
+                className="h-10 rounded-full" 
+              />
               <Link to="/" className="text-xl font-bold">Mura Infinity Tech</Link>
             </div>
+            
+            {/* Mobile Menu */}
+            <div className={`fixed inset-0 bg-black bg-opacity-50 z-50 transform ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:hidden transition-transform duration-300 ease-in-out`}>
+              <div className="bg-white text-gray-800 w-4/5 h-full p-4">
+                <div className="flex justify-between items-center mb-8">
+                  <h2 className="text-xl font-bold">Menu</h2>
+                  <button onClick={() => setIsMenuOpen(false)}>
+                    <FaTimes size={24} className="text-gray-600" />
+                  </button>
+                </div>
+                
+                <nav className="flex flex-col space-y-4">
+                  <Link 
+                    to="/" 
+                    className="hover:text-blue-600 py-2 border-b border-gray-200"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Home
+                  </Link>
+                  <Link 
+                    to="/products" 
+                    className="hover:text-blue-600 py-2 border-b border-gray-200"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Products
+                  </Link>
+                  <Link 
+                    to="/about" 
+                    className="hover:text-blue-600 py-2 border-b border-gray-200"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    About
+                  </Link>
+                  <Link 
+                    to="/contact" 
+                    className="hover:text-blue-600 py-2 border-b border-gray-200"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Contact
+                  </Link>
+                  <div className="pt-4 border-t border-gray-300">
+                    <Link 
+                      to="/login" 
+                      className="flex items-center text-blue-600"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <FaUser className="mr-2" /> Login
+                    </Link>
+                  </div>
+                </nav>
+              </div>
+            </div>
+
+            {/* Desktop Navigation */}
             <nav className="hidden md:flex space-x-6">
               <Link to="/" className="hover:text-blue-200">Home</Link>
               <Link to="/products" className="hover:text-blue-200">Products</Link>
               <Link to="/about" className="hover:text-blue-200">About</Link>
               <Link to="/contact" className="hover:text-blue-200">Contact</Link>
-              <Link to="/login">Login</Link>
             </nav>
+            
             <div className="flex items-center space-x-4">
+              <Link to="/login" className="hidden md:block hover:text-blue-200">Login</Link>
               <button 
                 className="relative"
                 onClick={() => setIsCartOpen(!isCartOpen)}
@@ -97,7 +149,7 @@ const App = () => {
         {/* Cart Component */}
         {isCartOpen && (
           <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
-            <div className="bg-white w-full md:w-1/3 h-full p-4 overflow-y-auto">
+            <div className="bg-white w-full max-w-md h-full p-4 overflow-y-auto">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="text-xl font-bold">Your Cart</h2>
                 <button onClick={() => setIsCartOpen(false)}>
@@ -109,7 +161,7 @@ const App = () => {
                 <div className="text-center py-12">
                   <p className="text-gray-500 text-lg">Your cart is empty</p>
                   <button 
-                    className="mt-4 text-blue-600 hover:text-blue-800"
+                    className="mt-4 px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                     onClick={() => setIsCartOpen(false)}
                   >
                     Continue Shopping
@@ -117,18 +169,18 @@ const App = () => {
                 </div>
               ) : (
                 <>
-                  <div className="space-y-4 mb-6">
+                  <div className="space-y-4 mb-6 max-h-[60vh] overflow-y-auto">
                     {cart.map((item, index) => (
-                      <div key={index} className="flex border-b pb-4">
-                        <div className="w-20 h-20 bg-gray-200 flex-shrink-0 mr-4">
+                      <div key={index} className="flex border-b pb-4 items-center">
+                        <div className="w-16 h-16 bg-gray-200 flex-shrink-0 mr-3 rounded overflow-hidden">
                           <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                         </div>
                         <div className="flex-grow">
-                          <h3 className="font-medium">{item.name}</h3>
-                          <p className="text-blue-600 font-bold">frw{item.price.toFixed(2)}</p>
+                          <h3 className="font-medium text-sm">{item.name}</h3>
+                          <p className="text-blue-600 font-bold text-sm">frw{item.price.toFixed(2)}</p>
                         </div>
                         <button 
-                          className="text-red-500 hover:text-red-700"
+                          className="text-red-500 hover:text-red-700 p-2"
                           onClick={() => removeFromCart(item.id)}
                         >
                           <FaTimes />
@@ -137,18 +189,18 @@ const App = () => {
                     ))}
                   </div>
                   
-                  <div className="border-t pt-4">
-                    <div className="flex justify-between font-bold text-lg mb-6">
+                  <div className="border-t pt-4 sticky bottom-0 bg-white pb-4">
+                    <div className="flex justify-between font-bold text-lg mb-4">
                       <span>Total:</span>
                       <span>frw{cartTotal.toFixed(2)}</span>
                     </div>
                     
-                    <button className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition-colors mb-2">
+                    <button className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors mb-3 font-medium">
                       Proceed to Checkout
                     </button>
                     
                     <button 
-                      className="w-full text-blue-600 py-2"
+                      className="w-full text-blue-600 py-2 font-medium"
                       onClick={() => setIsCartOpen(false)}
                     >
                       Continue Shopping
@@ -161,17 +213,17 @@ const App = () => {
         )}
 
         {/* Footer */}
-        <footer className="bg-gray-800 text-white p-8">
+        <footer className="bg-gray-800 text-white p-6">
           <div className="container mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div>
-                <h3 className="text-lg font-bold mb-4">Mura Infinity Tech</h3>
-                <p className="text-gray-400">Your trusted electronics retailer in Rwanda</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="mb-6 sm:mb-0">
+                <h3 className="text-lg font-bold mb-3">Mura Infinity Tech</h3>
+                <p className="text-gray-400 text-sm">Your trusted electronics retailer in Rwanda</p>
               </div>
               
-              <div>
-                <h4 className="font-semibold mb-4">Quick Links</h4>
-                <ul className="space-y-2">
+              <div className="mb-6 sm:mb-0">
+                <h4 className="font-semibold mb-3">Quick Links</h4>
+                <ul className="space-y-2 text-sm">
                   <li><Link to="/" className="text-gray-400 hover:text-white">Home</Link></li>
                   <li><Link to="/products" className="text-gray-400 hover:text-white">Products</Link></li>
                   <li><Link to="/about" className="text-gray-400 hover:text-white">About</Link></li>
@@ -179,9 +231,9 @@ const App = () => {
                 </ul>
               </div>
               
-              <div>
-                <h4 className="font-semibold mb-4">Contact Us</h4>
-                <address className="not-italic text-gray-400">
+              <div className="mb-6 sm:mb-0">
+                <h4 className="font-semibold mb-3">Contact Us</h4>
+                <address className="not-italic text-gray-400 text-sm">
                   Rwamagana District<br />
                   Eastern Province, Rwanda<br />
                   Email: info@murainfinitytech.rw<br />
@@ -190,20 +242,22 @@ const App = () => {
               </div>
               
               <div>
-                <h4 className="font-semibold mb-4">Newsletter</h4>
-                <p className="text-gray-400 mb-2">Subscribe for updates</p>
-                <div className="flex">
+                <h4 className="font-semibold mb-3">Newsletter</h4>
+                <p className="text-gray-400 text-sm mb-2">Subscribe for updates</p>
+                <div className="flex flex-col sm:flex-row gap-2">
                   <input 
                     type="email" 
                     placeholder="Your email" 
-                    className="p-2 text-gray-800 flex-grow"
+                    className="p-2 text-gray-800 rounded flex-grow text-sm"
                   />
-                  <button className="bg-blue-600 px-4">Subscribe</button>
+                  <button className="bg-blue-600 px-4 py-2 rounded text-sm whitespace-nowrap">
+                    Subscribe
+                  </button>
                 </div>
               </div>
             </div>
             
-            <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+            <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400 text-sm">
               <p>&copy; {new Date().getFullYear()} Mura Infinity Tech. All rights reserved.</p>
             </div>
           </div>
