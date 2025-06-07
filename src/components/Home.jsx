@@ -1,4 +1,4 @@
-update this and make it to show many featured products and give me full codes: /**
+ /**
     * @description      : 
     * @author           : Schadrack
     * @group            : 
